@@ -16,3 +16,11 @@
     background-color: #c09000 !important;
     color: #000000 !important;
 }
+
+.fs-text-nav {
+    font-size: 15px;
+}
+
+.app-color-bg {
+    background-color: #f0b100;
+}
