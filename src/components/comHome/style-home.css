@@ -1,0 +1,13 @@
+.fs-home {
+    font-size: 13px;
+}
+
+/*Estilos para el contenido de la card del producto*/
+.badge-home-category {
+    color: #973c00;
+    background-color: #fef9c2 !important;
+}
+
+.color-price-product {
+    color: #e17100
+}

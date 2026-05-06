@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 export default function NavBar() {
     return (
         <>
-        <Navbar expand="true" className="shadow-sm mb-4">
+        <Navbar expand="true" className="shadow-sm mb-4 p-0">
             <Container className="p-0">
                 <Navbar.Brand>
                     <h5>Shop proyect</h5>
