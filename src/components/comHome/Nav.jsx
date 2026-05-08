@@ -1,8 +1,30 @@
+import { useState } from "react";
 import { Button, Container, Navbar } from "react-bootstrap";
 import { LuShoppingBasket } from "react-icons/lu";
 import { Outlet } from "react-router-dom";
+import Modal_Login from "../comLogin/Modal-Login";
+import Modal_Register from "../comLogin/Modal-Register";
 
 export default function NavBar() {
+    const [show, setShow] = useState(false);
+    const [showregister, setShowregister] = useState(false); //Variables para mostrar el modal de registro
+
+    const MostrarModals = (modal) => {
+        if (modal === "oplogin") {
+            setShow(true);
+            setShowregister(false);
+        } else if (modal === "clogin") {
+            setShow(false);
+            setShowregister(false);
+        } else if (modal === "opregis") {
+            setShow(false);
+            setShowregister(true);
+        } else {
+            setShow(false);
+            setShowregister(false);
+        }
+    }
+
     return (
         <>
         <Navbar expand="true" className="shadow-sm mb-4 p-0">
@@ -11,9 +33,11 @@ export default function NavBar() {
                     <h5>Shop proyect</h5>
                     <p className="fs-text-nav m-0 p-0 d-flex align-items-center"><LuShoppingBasket />Tienda Online</p>
                 </Navbar.Brand>
-                <Button className="fw-semibold app-color-button">Iniciar Sesion</Button>
+                <Button className="fw-semibold app-color-button" onClick={() => MostrarModals("oplogin")}>Iniciar Sesion</Button>
             </Container>
         </Navbar>
+        <Modal_Login show={show} ocultar={() => MostrarModals("clogin")} mostrarRegister={() => MostrarModals("opregis")} />
+        <Modal_Register show={showregister} ocultar={() => MostrarModals("cregister")} />
         {/*Oulet sirve para definir donde se renderiza el contenido de las paginas despues del NAV*/}
         <Outlet />
         </>

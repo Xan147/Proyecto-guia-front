@@ -1,0 +1,10 @@
+.link-create-acc {
+    color: #bb4d00;
+    cursor: default;
+    text-decoration: none;
+}
+
+.link-create-acc:hover {
+    cursor: default;
+    text-decoration: underline;
+}
