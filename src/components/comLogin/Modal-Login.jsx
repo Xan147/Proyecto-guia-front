@@ -2,7 +2,7 @@ import { Button, Form, Modal } from "react-bootstrap";
 import './style-modals-login.css';
 import { useState } from "react";
 
-export default function Modal_Login( { show, ocultar}) {
+export default function Modal_Login( { show, ocultar, mostrarRegister } ) {
     return (
         <>
         <Modal show={show} onHide={ocultar} centered>
@@ -25,7 +25,7 @@ export default function Modal_Login( { show, ocultar}) {
                     <Button className="mb-4 w-100 app-color-button fw-semibold">Iniciar sesion</Button>
                 </Form>
                 <div className="text-center">
-                    <a onClick={ocultar} href="#" className="fw-semibold link-create-acc">¿No tienes cuenta?</a>
+                    <a onClick={mostrarRegister} href="#" className="fw-semibold link-create-acc">¿No tienes cuenta?</a>
                 </div>
             </Modal.Body>
         </Modal>
