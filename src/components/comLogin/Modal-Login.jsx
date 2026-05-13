@@ -2,8 +2,11 @@ import { Button, Form, Modal } from "react-bootstrap";
 import './style-modals-login.css';
 import { useState } from "react";
 import { loginUsuario } from "../../api/apiLogin";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Modal_Login({ show, ocultar, mostrarRegister }) {
+    const { login } = useAuth();
+
     const [form, setForm] = useState({
         email: "",
         password: ""
@@ -23,9 +26,8 @@ export default function Modal_Login({ show, ocultar, mostrarRegister }) {
         try {
             const data = await loginUsuario(form);
 
-            localStorage.setItem("token", data.token);
-            localStorage.setItem("email", data.email);
-
+            //Guardar info
+            login(data);
             console.log("Login exitoso:", data);
 
             ocultar();

@@ -1,6 +1,9 @@
 import { Badge, Button, Card, Col, Row } from "react-bootstrap";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Content_Home() {
+    const { usuario } = useAuth();
+    console.log("Usuario en contexto:", usuario);
     return (
         <>
         <h4>Catalogo de Productos</h4>
