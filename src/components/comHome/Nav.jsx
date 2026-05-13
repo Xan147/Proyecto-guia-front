@@ -4,8 +4,10 @@ import { LuShoppingBasket } from "react-icons/lu";
 import { Outlet } from "react-router-dom";
 import Modal_Login from "../comLogin/Modal-Login";
 import Modal_Register from "../comLogin/Modal-Register";
+import { useAuth } from "../../context/AuthContext";
 
 export default function NavBar() {
+    const { usuario, logout } = useAuth();
     const [show, setShow] = useState(false);
     const [showregister, setShowregister] = useState(false); //Variables para mostrar el modal de registro
 
@@ -27,13 +29,25 @@ export default function NavBar() {
 
     return (
         <>
-        <Navbar expand="true" className="shadow-sm mb-4 p-0">
+        <Navbar className="shadow-sm mb-4 p-0">
             <Container className="p-0">
                 <Navbar.Brand>
                     <h5>Shop proyect</h5>
                     <p className="fs-text-nav m-0 p-0 d-flex align-items-center"><LuShoppingBasket />Tienda Online</p>
                 </Navbar.Brand>
-                <Button className="fw-semibold app-color-button" onClick={() => MostrarModals("oplogin")}>Iniciar Sesion</Button>
+                {usuario ? (
+                    <>
+                    <div className="d-flex gap-4 align-items-center">
+                        <div>
+                            <p className="fw-semibold m-0">Bienvenido, {usuario.nombre}</p>
+                            <p className="fw-semibold m-0">Rol: {usuario.rol[0] === "ROLE_ADMIN" ? "Administrador" : "Usuario"}</p>
+                        </div>
+                        <Button className="fw-semibold app-color-button" onClick={logout}>Cerrar Sesion</Button>
+                    </div>
+                    </>
+                ) : (
+                    <Button className="fw-semibold app-color-button" onClick={() => MostrarModals("oplogin")}>Iniciar Sesion</Button>
+                )}
             </Container>
         </Navbar>
         <Modal_Login show={show} ocultar={() => MostrarModals("clogin")} mostrarRegister={() => MostrarModals("opregis")} />
